@@ -6,7 +6,7 @@ class GameArea {
       wrapperCards: "girls",
       cardsSizeStyle: "card-size-medium",
       backgroundImage: "url('https://dcgamedevblog.files.wordpress.com/2014/09/bg1.jpg')",
-    }
+    };
 
     this.counterRemainingCards = this.areaSettings.countCards;
     this.arrayCardsToRemove = [];
@@ -325,11 +325,11 @@ class GameArea {
   }
 
 
-  /**************Блин артур убери этот трэш****************/
   playerWon() {
     soundPlayer.playWinSound();
     this.runRain();
     stopwatch.stop();
+    this.gameArea.classList.add('hide');
     this.compareGameTimes();
 
     setTimeout(() => {
@@ -369,7 +369,6 @@ class GameArea {
 
     confirmDialog.confirm("Are you sure?", callback.bind(this));
   }
-  /**************Блин артур убери этот трэш****************/
 
 
 

@@ -103,7 +103,7 @@ class Storage {
       lastName: this.listProfiles[this.currentProfileId]['lastName'],
       wrapper: this.listProfiles[this.currentProfileId].gameSettings['wrapper'],
       time: gameTime,
-    }
+    };
 
     this.usersRating[level].push(timeRez);
 

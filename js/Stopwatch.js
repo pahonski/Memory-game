@@ -34,10 +34,7 @@ class Stopwatch {
 
   pause(){
     console.log("pause");
-    
-    
     this.isPaused = true;
-    console.log(this);
   }
 
   play(){

@@ -76,7 +76,7 @@ class Controller {
             const notification = {
               "action": "start-game",
               "notice": "game was started",
-            }
+            };
 
             subscriber['heandler'](notification);
           }
@@ -86,7 +86,7 @@ class Controller {
             const notification = {
               "action": "all-settings-downloaded",
               "notice": "all profile settings are downloaded!",
-            }
+            };
 
             subscriber['heandler'](notification);
           }
@@ -96,7 +96,7 @@ class Controller {
             const notification = {
               "action": "game-loaded",
               "notice": "Game-loaded you can play!",
-            }
+            };
 
             subscriber['heandler'](notification);
           }
