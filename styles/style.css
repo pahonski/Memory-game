@@ -56,6 +56,13 @@ section {
   z-index: 50;
   justify-content: space-between;
   margin-top: 10px;
+  flex-direction: column-reverse;
+}
+
+@media (min-width: 650px) {
+  .nav-bar {
+    flex-direction: row;
+  }
 }
 
 .rules,
@@ -261,6 +268,11 @@ td {
   cursor: pointer;
   background-color: #af111c;
   color: #f2f2f2;
+}
+
+.profile-row > td {
+  word-wrap: break-word;
+  max-width: 100px;
 }
 
 .rules {
@@ -853,7 +865,7 @@ settingsLevel
 
 .rating-container {
   width: 100%;
-  margin-top: 8%;
+  margin-top: 40%;
 }
 
 @media  (min-width: 670px) {

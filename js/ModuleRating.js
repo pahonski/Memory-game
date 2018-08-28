@@ -48,8 +48,8 @@ class ModuleRating {
     let tdFirstName = document.createElement("td");
     tdFirstName.innerHTML = profilePlayer["firstName"];
 
-    let tdLastName = document.createElement("td");
-    tdLastName.innerHTML = profilePlayer["lastName"];
+    // let tdLastName = document.createElement("td");
+    // tdLastName.innerHTML = profilePlayer["lastName"];
 
     let tdWrapper = document.createElement("td");
     tdWrapper.innerHTML = profilePlayer['wrapper'];
@@ -59,7 +59,7 @@ class ModuleRating {
 
     profileRow.appendChild(number);
     profileRow.appendChild(tdFirstName);
-    profileRow.appendChild(tdLastName);
+    // profileRow.appendChild(tdLastName);
     profileRow.appendChild(tdWrapper);
     profileRow.appendChild(tdTime);
 
