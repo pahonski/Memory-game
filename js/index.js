@@ -1,4 +1,4 @@
-const ajaxData = new AjaxData();
+
 
 const soundPlayer = new SoundPlayer();
 
@@ -12,11 +12,13 @@ const controller = new Controller(storage, router);
 
 const moduleProfiles = new ModuleProfiles(controller);
 const moduleNavbar = new ModuleNavbar(controller, moduleProfiles);
-const moduleSettings = new ModuleSettings(controller, ajaxData);
+
+const gameArea = new GameArea(controller);
+const moduleSettings = new ModuleSettings(controller, gameArea);
 
 const moduleRating = new ModuleRating(controller);
 
-const gameArea = new GameArea(controller);
+
 
 
 // const configWrappers = {

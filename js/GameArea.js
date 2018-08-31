@@ -1,5 +1,8 @@
 class GameArea {
-  constructor(controller) {
+  constructor(controller,) {
+
+    this.configWrappers = '';
+
     this.areaSettings = {
       level: "M",
       countCards: 18,
@@ -57,14 +60,14 @@ class GameArea {
 
   showPreviewGameCarusel() {
     const wrapper = this.areaSettings.wrapperCards;
-    const bgWrapperCarusel = configWrappers[wrapper].wrapperLink;
-    const wrapperCount = configWrappers[wrapper].frontSideLinks.length;
+    const bgWrapperCarusel = this.configWrappers[wrapper].wrapperLink;
+    const wrapperCount = this.configWrappers[wrapper].frontSideLinks.length;
 
     document.getElementById('caruselFrontSide')
       .style.backgroundImage = bgWrapperCarusel;
 
     this.caruselInterval = setInterval(() => {
-      const bgUrl = configWrappers[wrapper]
+      const bgUrl = this.configWrappers[wrapper]
         .frontSideLinks[Math.floor(Math.random() * wrapperCount)];
 
       document.getElementById('caruselBackside')
@@ -146,8 +149,8 @@ class GameArea {
   setArenaBackground() {
     const nameWrapper = this.areaSettings.wrapperCards;
 
-    if (configWrappers[nameWrapper].backgroundImageLink) {
-      const bgUrl = configWrappers[nameWrapper].backgroundImageLink;
+    if (this.configWrappers[nameWrapper].backgroundImageLink) {
+      const bgUrl = this.configWrappers[nameWrapper].backgroundImageLink;
       document.body.style.backgroundImage = bgUrl;
     }
   }
@@ -245,14 +248,14 @@ class GameArea {
   }
 
   getWrapperBackgroundUrl() {
-    const wrapperUrl = configWrappers[this.areaSettings.wrapperCards].wrapperLink;
+    const wrapperUrl = this.configWrappers[this.areaSettings.wrapperCards].wrapperLink;
     console.log(wrapperUrl);
 
     return wrapperUrl;
   }
 
   getRandomBackgroundUrl() {
-    const arrayUrls = configWrappers[this.areaSettings.wrapperCards].frontSideLinks;
+    const arrayUrls = this.configWrappers[this.areaSettings.wrapperCards].frontSideLinks;
     const randomNumber = Math.floor(Math.random() * arrayUrls.length);
 
     return arrayUrls[randomNumber];

@@ -1,4 +1,4 @@
-class AjaxData{
+class ChangeConfig{
   constructor() {
     this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
     this.configWrappers = '';

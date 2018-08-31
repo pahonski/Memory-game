@@ -1,7 +1,7 @@
 class ModuleSettings {
-  constructor(controller, ajaxData) {
+  constructor(controller, gameArea) {
     this.controller = controller;
-    this.ajaxData = ajaxData;
+    this.area = gameArea;
 
     this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
     this.configWrappers = '';
@@ -67,6 +67,7 @@ class ModuleSettings {
       this.configWrappers = JSON.parse(callback.result);
       this.loadCardWrappers();
       this.subscribe();
+      this.area.configWrappers = this.configWrappers;
     }
 
   }
