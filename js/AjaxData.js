@@ -1,22 +1,71 @@
-const ajaxData = new AjaxData();
+class AjaxData{
+  constructor() {
+    this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
+    this.configWrappers = '';
+    this.stringConfig = 'KUZNIATSOU_MEMORY_CONFIG';
+    this.stringRecordTable = 'KUZNIATSOU_MEMORY_RECORD';
+    this.password = '';
+    this.serverDataString = '';
 
-const soundPlayer = new SoundPlayer();
+  }
 
-const stopwatch = new Stopwatch();
-const confirmDialog = new ConfirmDialog();
+  addServerString(string, valueNotString) {
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'INSERT', n: string, v: JSON.stringify(valueNotString)
+      },
+      success: this.addServerStringReady,
+      error: this.ajaxError
+    });
+  }
 
-const storage = new Storage();
-const router = new Router();
+  addServerStringReady(callback) {
+    console.log(callback.result);
+  }
 
-const controller = new Controller(storage, router);
+  readFromServer(string) {
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'READ', n: string
+      },
+      success: this.readReady,
+      error: this.ajaxError
+    });
+  }
 
-const moduleProfiles = new ModuleProfiles(controller);
-const moduleNavbar = new ModuleNavbar(controller, moduleProfiles);
-const moduleSettings = new ModuleSettings(controller, ajaxData);
+  readReady(callback) {
+    console.log(callback, 'READ');
+    if (callback.error !== undefined) {
+      alert(callback.error);
+    }
 
-const moduleRating = new ModuleRating(controller);
+    if(callback.result === '') {
+      console.log('String not found');
+    }
 
-const gameArea = new GameArea(controller);
+    if(callback.result !== '') {
+      this.configWrappers = callback.result;
+    }
+
+  }
+
+  ajaxError(jqXHR, statusStr, errorStr) {
+    console.log(statusStr + ' ' + errorStr);
+  }
+
+  getConfigData() {
+    return this.configWrappers;
+  }
+}
+
 
 
 // const configWrappers = {

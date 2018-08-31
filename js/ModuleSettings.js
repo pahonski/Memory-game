@@ -1,6 +1,11 @@
 class ModuleSettings {
-  constructor(controller) {
+  constructor(controller, ajaxData) {
     this.controller = controller;
+    this.ajaxData = ajaxData;
+
+    this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
+    this.configWrappers = '';
+    this.stringConfig = 'KUZNIATSOU_MEMORY_CONFIG';
 
     this.settingsWrapper = document.getElementById('settingsWrappers');
     this.listWrappers = document.getElementById('listWrappers');
@@ -24,14 +29,50 @@ class ModuleSettings {
     this.buttonStartGame = document.getElementById('buttonStartGame');
     this.buttonStartGame.addEventListener('click', this.heandlerButtonStartGame.bind(this), false);
 
-    this.loadCardWrappers();
-    this.subscribe();
+    this.getConfigWrapper();
 
     this.interval = setInterval(()=>{
       if(!this.slideIsRun){
         this.nextSlideWrapper();
       }
     }, 5000);
+  }
+
+  getConfigWrapper() {
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'READ', n: this.stringConfig
+      },
+      success: this.readReady.bind(this),
+      error: this.ajaxError
+    });
+  }
+
+  readReady(callback) {
+    console.log(callback, 'READ');
+    if (callback.error !== undefined) {
+      alert(callback.error);
+    }
+
+    if(callback.result === '') {
+      console.log('String not found');
+    }
+
+    if(callback.result !== '') {
+      console.log('config download, call loadCardWrappers and subscribe');
+      this.configWrappers = JSON.parse(callback.result);
+      this.loadCardWrappers();
+      this.subscribe();
+    }
+
+  }
+
+  ajaxError(jqXHR, statusStr, errorStr) {
+    console.log(statusStr + ' ' + errorStr);
   }
 
   showSettingsWrappers() {
@@ -82,11 +123,12 @@ class ModuleSettings {
   }
 
   loadCardWrappers() {
-    const wrapperUrl = configWrappers;
+    console.log(this.configWrappers);
+    const wrapperUrl = this.configWrappers;
 
     let counter = 1;
-    for (const key in configWrappers) {
-      const wrapperUrl = configWrappers[key].wrapperLink;
+    for (const key in this.configWrappers) {
+      const wrapperUrl = this.configWrappers[key].wrapperLink;
       const cardWrapper = this.createCardWrapper(key, wrapperUrl);
 
       if (counter > 3) {
