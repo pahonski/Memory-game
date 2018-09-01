@@ -329,8 +329,8 @@ class GameArea {
 
 
   playerWon() {
-    soundPlayer.playWinSound();
-    this.runRain();
+    // soundPlayer.playWinSound();
+    // this.runRain();
     stopwatch.stop();
     this.gameArea.classList.add('hide');
     this.compareGameTimes();
