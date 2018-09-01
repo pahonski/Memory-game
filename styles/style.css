@@ -305,9 +305,15 @@ td {
   min-width: 300px;
   margin: 0 auto;
   padding: 20px;
-  font-size: 28px;
+  font-size: 20px;
   /*border: 1px solid saddlebrown;*/
   color: #e01818;
+}
+
+@media (min-width: 670px) {
+  .rules {
+    font-size: 28px;
+  }
 }
 
 .button-blood.button-blink {

@@ -5,8 +5,80 @@ class Storage {
     this.listSubscribers = [];
     this.currentProfileId = null;
 
+    this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
+    this.profilesStorage = 'KUZNIATSOU_MEMORY_PROFILES';
+    this.usersRatingStorage = 'KUZNIATSOU_MEMORY_RATING';
+
+
     this.loadData();
   }
+
+  loadProfilesFromServer() {
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'READ', n: this.profilesStorage
+      },
+      success: this.loadProfilesFromServerReady,
+      error: this.ajaxErr
+    })
+  }
+
+  loadProfilesFromServerReady(callback) {
+    if(callback.error !== undefined) {
+      console.log(callback.error);
+    }
+
+    if(callback.result === '') {
+      console.log('База пуста!');
+    }
+
+    if(callback.result !== '') {
+
+    }
+  }
+
+  loadRatingFromServer() {
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'READ', n: this.usersRatingStorage
+      },
+      success: this.loadRatingFromServerReady,
+      error: this.ajaxErr
+    })
+  }
+
+  loadRatingFromServerReady(callback) {
+    if(callback.error !== undefined) {
+      console.log(callback.error);
+    }
+
+    if(callback.result === '') {
+      console.log('База пуста!');
+
+    }
+
+    if(callback.result !== '') {
+
+    }
+  }
+
+  updateReady(callresult) {
+    console.log(callresult, 'UPDATE');
+    if (callresult.error != undefined)
+      alert(callresult.error);
+  };
+
+  ajaxErr(jqXHR, statusStr, errorStr) {
+    console.log(statusStr + ' ' + errorStr);
+  };
 
   updateProfilesData() {
     localStorage.setItem("listProfiles", JSON.stringify(this.listProfiles));
