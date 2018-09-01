@@ -19,7 +19,7 @@ h4 {
 
 body {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   padding: 0;
   margin: 0 auto;
   background-color: #2e2a2ada;
@@ -888,9 +888,9 @@ settingsLevel
   padding: 15px 15px 5px 15px;
   border-radius: 2px;
   /* background-color: #201f1f38;*/
-  background-color: #1a1a1aa2;
-  -webkit-box-shadow: 1px 2px 12px -1px rgba(45, 41, 41, 0.92);
-  box-shadow: 1px 2px 12px -1px rgba(45, 41, 41, 0.92);
+  /*background-color: #1a1a1aa2;*/
+  /*-webkit-box-shadow: 1px 2px 12px -1px rgba(45, 41, 41, 0.92);*/
+  /*box-shadow: 1px 2px 12px -1px rgba(45, 41, 41, 0.92);*/
 }
 
 .rating-container {
