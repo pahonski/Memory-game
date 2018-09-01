@@ -8,5 +8,5 @@ gulp.task('serve', function () {
     open: true,
     server: './'
   });
-  browsersync.watch('./', browsersync.reload);
+  // browsersync.watch('./', browsersync.reload);
 });

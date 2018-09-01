@@ -38,10 +38,10 @@ body {
   margin: 0 auto;
   background-color: #2e2a2ada;
   background: url('../images/bg-main-4.jpg') no-repeat center;
-  -webkit-background-size: auto;
-  -moz-background-size: auto;
-  -o-background-size: auto;
-  background-size: auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-family: Halloween;
   font-size: 22px;
@@ -551,7 +551,7 @@ settings-wrappers
   margin-bottom: 10px;
   border: 2px solid #5c5c5ede;
   border-radius: 4px;
-  background-color: #575358;
+  /*background-color: #575358;*/
   /* background-image: url('../images/hot/wrapper.jpg');*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -684,6 +684,7 @@ settings-wrappers
   position: relative;
   margin-bottom: 0;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: all 0.7s ease;
   background-image: none;
 }

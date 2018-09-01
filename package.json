@@ -8,6 +8,6 @@
   },
   "devDependencies": {
     "browser-sync": "^2.24.7",
-    "gulp": "github:gulpjs/gulp#4.0"
+    "gulp": "^3.9.1"
   }
 }
