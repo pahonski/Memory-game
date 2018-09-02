@@ -89,10 +89,10 @@
   </section>
 
   <section id="profilesSection" class="profiles flex column h-center hide">
+    <header class="flex">
+      <a id="btnHideCloseProfiles" class="button-blood">Close</a>
+    </header>
     <div class="profiles-container">
-      <header class="flex">
-        <a id="btnHideCloseProfiles" class="button-blood">Close</a>
-      </header>
       <div class="table-container">
         <table id="profilesTable" class="profiles-table effect-show">
           <tr class="">
@@ -104,10 +104,10 @@
       </div>
 
 
-      <footer class="flex">
-        <button id="buttonLoadProfile" class="button-blood hide" disabled>Load Profile</button>
-      </footer>
     </div>
+    <footer class="flex">
+      <button id="buttonLoadProfile" class="button-blood hide" disabled>Load Profile</button>
+    </footer>
   </section>
 
   <section id="settingsWrappers" class="settings-wrappers flex column h-center hide">
@@ -137,16 +137,16 @@
   </section>
 
   <section id="ratingSection" class="profiles flex column h-center hide">
-    <div class="rating-container">
-      <header class="flex rating-header">
-        <div id="ratingLevelButtons" class="rating-level-buttons">
-          <button level="E" class="button-blood button-selected">Easy</button>
-          <button level="M" class="button-blood">Medium</button>
-          <button level="H" class="button-blood">Hard</button>
-        </div>
+    <header class="flex rating-header">
+      <div id="ratingLevelButtons" class="rating-level-buttons">
+        <button level="E" class="button-blood button-selected">Easy</button>
+        <button level="M" class="button-blood">Medium</button>
+        <button level="H" class="button-blood">Hard</button>
+      </div>
 
-        <button id="btnHideCloseRating" class="button-blood">Close</button>
-      </header>
+      <button id="btnHideCloseRating" class="button-blood">Close</button>
+    </header>
+    <div class="rating-container">
       <div class="table-container">
         <table id="ratingTable" class="profiles-table effect-show">
           <tr class="">

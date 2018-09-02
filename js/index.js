@@ -52,6 +52,8 @@
 //
 // updateProfiles();
 
+const config = new ChangeConfig();
+
 const soundPlayer = new SoundPlayer();
 
 const stopwatch = new Stopwatch();
