@@ -1,20 +1,34 @@
 class Storage {
   constructor() {
     this.listProfiles = [];
-    this.usersRating = [];
+    this.usersRating = {
+      'E': [],
+      'M': [],
+      'H': [],
+    };
     this.listSubscribers = [];
     this.currentProfileId = null;
 
     this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
     this.profilesStorage = 'KUZNIATSOU_MEMORY_PROFILES';
     this.usersRatingStorage = 'KUZNIATSOU_MEMORY_RATING';
+  }
 
-
-    this.loadData();
+  async getProfiles() {
+    if(this.listProfiles.length) {
+      return this.listProfiles;
+    } else {
+      this.listProfiles = await this.loadProfilesFromServer()
+        .then(
+          this.loadProfilesFromServerReady.bind(this),
+          this.ajaxErr,
+        );
+      return this.listProfiles;
+    }
   }
 
   loadProfilesFromServer() {
-    $.ajax({
+    return $.ajax({
       url: this.serverUrl,
       type: 'POST',
       cache: false,
@@ -22,8 +36,8 @@ class Storage {
       data: {
         f: 'READ', n: this.profilesStorage
       },
-      success: this.loadProfilesFromServerReady,
-      error: this.ajaxErr
+      // success: this.loadProfilesFromServerReady.bind(this),
+      // error: this.ajaxErr
     })
   }
 
@@ -37,7 +51,10 @@ class Storage {
     }
 
     if(callback.result !== '') {
-
+      // const loadedProfiles = JSON.parse(callback.result);
+      // this.listProfiles = loadedProfiles ? loadedProfiles : [];
+      console.log('files from server', JSON.parse(callback.result), 'profileList', this.listProfiles);
+      return JSON.parse(callback.result);
     }
   }
 
@@ -50,7 +67,7 @@ class Storage {
       data: {
         f: 'READ', n: this.usersRatingStorage
       },
-      success: this.loadRatingFromServerReady,
+      success: this.loadRatingFromServerReady.bind(this),
       error: this.ajaxErr
     })
   }
@@ -66,9 +83,89 @@ class Storage {
     }
 
     if(callback.result !== '') {
-
+      const loadedRating = JSON.parse(callback.result);
+      this.usersRating = loadedRating ? loadedRating : {
+        'E': [],
+        'M': [],
+        'H': [],
+      };
     }
   }
+
+
+
+
+
+  updateProfiles() {
+    this.password = Math.random();
+    let that = this;
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'LOCKGET', n: that.profilesStorage, p: that.password
+      },
+      success: that.updateProfilesReady.bind(that),
+      error: that.ajaxErr
+    })
+  };
+
+  updateProfilesReady(callback) {
+    let that = this;
+    console.log('asdasd', this.listProfiles);
+    if (callback.error !== undefined)
+      alert(callback.error);
+    else {
+      $.ajax({
+        url: this.serverUrl,
+        type: 'POST',
+        cache: false,
+        dataType: 'json',
+        data: {
+          f: 'UPDATE', n: that.profilesStorage, v: JSON.stringify(this.listProfiles), p: that.password
+        },
+        success: that.updateReady,
+        error: that.ajaxErr
+      })
+    }
+  };
+
+  //
+
+  updateRating() {
+    this.password = Math.random();
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'LOCKGET', n: this.usersRatingStorage, p: this.password
+      },
+      success: this.updateRatingReady.bind(this),
+      error: this.ajaxErr
+    })
+  };
+
+  updateRatingReady() {
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'UPDATE', n: this.usersRatingStorage, v: JSON.stringify(this.usersRating), p: this.password
+      },
+      success: this.updateReady,
+      error: this.ajaxErr
+    });
+
+    this.notifySubscribers("update-rating");
+  };
+
+  //
 
   updateReady(callresult) {
     console.log(callresult, 'UPDATE');
@@ -80,28 +177,25 @@ class Storage {
     console.log(statusStr + ' ' + errorStr);
   };
 
-  updateProfilesData() {
-    localStorage.setItem("listProfiles", JSON.stringify(this.listProfiles));
-  }
 
-  updateRatingData() {
-    console.log(this.usersRating);
-    localStorage.setItem("usersRating", JSON.stringify(this.usersRating));
 
-    this.notifySubscribers("update-rating");
-  }
 
-  loadData() {
-    const loadedProfiles = JSON.parse(localStorage.getItem('listProfiles'));
-    this.listProfiles = loadedProfiles ? loadedProfiles : [];
 
-    const loadedRating = JSON.parse(localStorage.getItem('usersRating'));
-    this.usersRating = loadedRating ? loadedRating : {
-      'E': [],
-      'M': [],
-      'H': [],
-    };
-  }
+  // updateProfilesData() {
+  //   localStorage.setItem("listProfiles", JSON.stringify(this.listProfiles));
+  // }
+
+  // updateRatingData() {
+  //   console.log(this.usersRating);
+  //   localStorage.setItem("usersRating", JSON.stringify(this.usersRating));
+  //
+  //   this.notifySubscribers("update-rating");
+  // }
+
+  // loadData() {
+  //   this.loadProfilesFromServer();
+  //   this.loadRatingFromServer();
+  // }
 
   notifySubscribers(action) {
     for (let index = 0; index < this.listSubscribers.length; index++) {
@@ -136,11 +230,13 @@ class Storage {
   }
 
   addNewProfile(player) {
+    console.log('enter addNewProfile');
     if (this.isPlayerExist(player)) {
       return false;
     } else {
       this.listProfiles.push(player);
-      localStorage.setItem("listProfiles", JSON.stringify(this.listProfiles));
+      // localStorage.setItem("listProfiles", JSON.stringify(this.listProfiles));
+      this.updateProfiles();
       return true;
     }
 
@@ -151,6 +247,7 @@ class Storage {
   }
 
   getAllRatingByLevel(level) {
+    console.log(this.usersRating, this.usersRating[level]);
     return this.usersRating[level].slice();
   }
 
@@ -189,7 +286,7 @@ class Storage {
       this.usersRating[level] = this.usersRating[level].slice(0, 10);
     }
 
-    this.updateRatingData();
+    this.updateRating();
   }
 
   compareGameTimesByLevel(gameTime, level) {
@@ -217,12 +314,12 @@ class Storage {
 
   setProfileGameWrapper(wrapperKey) {
     this.listProfiles[this.currentProfileId].gameSettings.wrapper = wrapperKey;
-    this.updateProfilesData();
+    this.updateProfiles();
   }
 
   setProfileGameLevel(level) {
     this.listProfiles[this.currentProfileId].gameSettings.level = level;
-    this.updateProfilesData();
+    this.updateProfiles();
   }
 
   getCurrentProfileSettings() {

@@ -2,13 +2,14 @@ class Controller {
   constructor(storage, router) {
     this.store = storage;
     this.router = router;
+    this.arrayProfiles = '';
 
     this.listSubscribers = [];
   }
 
   /*request to Storage for get array profiles players*/
-  getAllProfiles() {
-    const arrayProfiles = this.store.selectAllProfiles();
+  async getAllProfiles() {
+    const arrayProfiles = await this.store.getProfiles();
     return arrayProfiles;
   }
 

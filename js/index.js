@@ -1,4 +1,56 @@
-
+// $.ajax({
+//   url: 'https://fe.it-academy.by/AjaxStringStorage2.php',
+//   type: 'POST',
+//   cache: false,
+//   dataType: 'json',
+//   data: {
+//     f: 'INSERT', n: 'KUZNIATSOU_MEMORY_RATING', v: ''
+//   },
+//   success: hello,
+//   error: this.ajaxErr
+// });
+//
+// function hello(callback) {
+//   console.log(callback.result)
+// }
+// let password;
+//
+// function updateProfiles() {
+//   password = Math.random();
+//   $.ajax({
+//     url: 'https://fe.it-academy.by/AjaxStringStorage2.php',
+//     type: 'POST',
+//     cache: false,
+//     dataType: 'json',
+//     data: {
+//       f: 'LOCKGET', n: 'KUZNIATSOU_MEMORY_RATING', p: password
+//     },
+//     success: updateProfilesReady,
+//     error: this.ajaxErr
+//   })
+// }
+//
+// function updateProfilesReady() {
+//   $.ajax({
+//     url: 'https://fe.it-academy.by/AjaxStringStorage2.php',
+//     type: 'POST',
+//     cache: false,
+//     dataType: 'json',
+//     data: {
+//       f: 'UPDATE', n: 'KUZNIATSOU_MEMORY_RATING', v: "{}", p: password
+//     },
+//     success: updateReady,
+//     error: this.ajaxErr
+//   })
+// }
+//
+// function updateReady(callresult) {
+//   console.log(callresult, 'UPDATE');
+//   if (callresult.error != undefined)
+//     alert(callresult.error);
+// }
+//
+// updateProfiles();
 
 const soundPlayer = new SoundPlayer();
 
@@ -99,4 +151,6 @@ const moduleRating = new ModuleRating(controller);
 //     backgroundImageLink: "url('./images/guardians the galaxy/bg.jpg')",
 //   }
 // };
+
+
 

@@ -134,8 +134,8 @@ class ModuleProfiles {
     return profileRow;
   }
 
-  loadProfiles() {
-    this.arrayProfiles = this.controller.getAllProfiles();
+  async loadProfiles() {
+    this.arrayProfiles = await this.controller.getAllProfiles();
     this.render();
   }
 
