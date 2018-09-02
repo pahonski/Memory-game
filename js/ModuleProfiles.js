@@ -50,12 +50,12 @@ class ModuleProfiles {
   heandlerProfileSelector(e) {
     const profileRow = e.target.parentElement;
     const profileId = profileRow.getAttribute('user-id');
+    console.log(profileRow, 'asdasd');
 
     if (profileId) {
       if (this.activeProfileHTMLElement) {
         this.activeProfileHTMLElement.classList.remove('active');
       }
-
       this.setActiveProfileRow(profileRow);
       this.showButtonLoadProfile();
     }
@@ -169,9 +169,10 @@ class ModuleProfiles {
     }
   }
 
-  updateTable() {
+  async updateTable() {
     this.clear();
-    this.arrayProfiles = this.controller.getAllProfiles();
+    this.arrayProfiles = await this.controller.getAllProfiles();
+    console.log(this.arrayProfiles, 'lol');
     this.render();
 
     const rows = this.profilesTable.querySelectorAll(".profile-row");

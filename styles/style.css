@@ -269,6 +269,11 @@ section {
   margin-top: 20px;
 }
 
+.table-container {
+  height: 360px;
+  overflow-x: hidden;
+}
+
 .profiles-table, .rating-table{
   overflow: auto;
 }
@@ -917,6 +922,7 @@ settingsLevel
 
 .rating-container {
   width: 100%;
+  height: 50%;
   margin-top: 40%;
   overflow: auto;
 }

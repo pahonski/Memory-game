@@ -12,6 +12,8 @@ class Storage {
     this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
     this.profilesStorage = 'KUZNIATSOU_MEMORY_PROFILES';
     this.usersRatingStorage = 'KUZNIATSOU_MEMORY_RATING';
+
+    this.loadRatingFromServer();
   }
 
   async getProfiles() {
@@ -89,6 +91,8 @@ class Storage {
         'M': [],
         'H': [],
       };
+
+      console.log('Score table download SUCCESS');
     }
   }
 
