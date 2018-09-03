@@ -97,6 +97,9 @@ class ModuleProfiles {
     } else {
       console.log("all settings exist");
 
+      let nameContainer = document.getElementById('userName');
+      nameContainer.innerHTML = player.firstName;
+
       this.controller.notifySubscribers("all-settings-downloaded");
 
       this.controller.router.routToSettingsLevel();
@@ -104,10 +107,11 @@ class ModuleProfiles {
   }
 
   heandlerButtonLoadProfile() {
+    console.log('heandlerButtonLoadProfile ACTIVE');
     soundPlayer.playClickButtonSound();
     this.isProfileLoaded = true;
     this.hide();
-    let name = document.getElementById('userName');
+    console.log(name, 'DRASTE');
     
     setTimeout(() => {
       this.startSettingsGame();
