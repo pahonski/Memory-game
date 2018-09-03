@@ -107,6 +107,7 @@ class ModuleProfiles {
     soundPlayer.playClickButtonSound();
     this.isProfileLoaded = true;
     this.hide();
+    let name = document.getElementById('userName');
     
     setTimeout(() => {
       this.startSettingsGame();

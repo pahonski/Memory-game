@@ -167,8 +167,8 @@ class GameArea {
         this.areaSettings.cardsSizeStyle = "card-size-large";
         break;
       case "M":
-        this.counterRemainingCards = 20;
-        this.areaSettings.countCards = 20;
+        this.counterRemainingCards = 18;
+        this.areaSettings.countCards = 18;
         this.areaSettings.cardsSizeStyle = "card-size-medium";
         break;
       case "H":

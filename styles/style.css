@@ -1,6 +1,12 @@
 html {
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+}
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 ::-webkit-scrollbar {
@@ -12,24 +18,24 @@ html {
   background: #FF0000;
 }
 
-@media screen and (orientation:landscape) and (max-device-width: 900px) {
-  html{
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    -webkit-transform-origin: left top;
-    -moz-transform-origin: left top;
-    -ms-transform-origin: left top;
-    -o-transform-origin: left top;
-    transform-origin: left top;
-    width: 320px; /*Разрешение экрана iPhone*/
-    position: absolute;
-    top: 100%;
-    left: 0
-  }
-}
+/*@media screen and (orientation:landscape) and (max-device-width: 900px) {*/
+  /*html{*/
+    /*-webkit-transform: rotate(-90deg);*/
+    /*-moz-transform: rotate(-90deg);*/
+    /*-ms-transform: rotate(-90deg);*/
+    /*-o-transform: rotate(-90deg);*/
+    /*transform: rotate(-90deg);*/
+    /*-webkit-transform-origin: left top;*/
+    /*-moz-transform-origin: left top;*/
+    /*-ms-transform-origin: left top;*/
+    /*-o-transform-origin: left top;*/
+    /*transform-origin: left top;*/
+    /*width: 320px; !*Разрешение экрана iPhone*!*/
+    /*position: absolute;*/
+    /*top: 100%;*/
+    /*left: 0*/
+  /*}*/
+/*}*/
 
 @font-face {
   font-family: Halloween;
@@ -56,7 +62,7 @@ body {
   padding: 0;
   margin: 0 auto;
   background-color: #2e2a2ada;
-  background: url('../images/bg-main-4.jpg') no-repeat center;
+  background: url('../images/bg-main-4.jpg') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -66,9 +72,14 @@ body {
   font-size: 22px;
 }
 
-body.landscape {
-  background-size: auto;
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
 }
+
+/*body.landscape {*/
+  /*background-size: auto;*/
+/*}*/
 
 ol,
 ul {
@@ -328,7 +339,7 @@ td {
   flex-direction: column;
   min-width: 300px;
   margin: 0 auto;
-  padding: 20px;
+  /*padding: 20px;*/
   font-size: 20px;
   /*border: 1px solid saddlebrown;*/
   color: #e01818;
@@ -471,7 +482,7 @@ ul {
 
 .list-levels {
   align-items: stretch;
-  margin-bottom: 29px;
+  /*margin-bottom: 29px;*/
   width: 200px;
   padding: 15px;
   border-radius: 2px;
@@ -517,6 +528,7 @@ settings-wrappers
   overflow: hidden;
   width: 230px;//267
   margin: 10px 0 15px 0;
+  color: red;
 }
 
 @media (min-width: 670px) {
@@ -970,7 +982,7 @@ settingsLevel
 
 .rating-header {
   justify-content: space-between;
-  margin-top: 40%;
+  margin-top: 15%;
 }
 
 @media  (min-width: 670px) {
@@ -1154,8 +1166,8 @@ settingsLevel
   width: 600px;
   align-items: center;
   border-radius: 2px;
-  margin: 10vh;
-  padding: 20px;
+  /*margin: 10vh;*/
+  padding: 5px;
   background-color: #0000009f;
   -webkit-box-shadow: 1px 2px 12px -1px rgba(45, 41, 41, 0.92);
   box-shadow: 1px 2px 12px -1px rgba(45, 41, 41, 0.92);
@@ -1188,6 +1200,7 @@ settingsLevel
 .carusel-card-container.card-size-large {
   width: 225px;
   height: 342px;
+  margin: 0 auto;
 }
 
 .active-card {
