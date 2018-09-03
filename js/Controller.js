@@ -4,6 +4,9 @@ class Controller {
     this.router = router;
     this.arrayProfiles = '';
 
+    this.window = window;
+    this.window.addEventListener('beforeunload', this.beforeUnloadNotification);
+
     this.listSubscribers = [];
   }
 
@@ -107,6 +110,19 @@ class Controller {
           break;
       }
     }
+  }
+
+  beforeUnloadNotification(evt) {
+    debugger;
+    console.log('Page close');
+    let message = "STOP";
+    if (typeof evt == "undefined") {
+      evt = window.event;
+    }
+    if (evt) {
+      evt.returnValue = message;
+    }
+    return message;
   }
 
 }
