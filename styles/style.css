@@ -504,7 +504,13 @@ ul {
   display: block;
   text-align: center;
   width: 150px;
-  font-size: 25px;
+  font-size: 20px;
+}
+
+@media (min-width: 630px) {
+  .list-levels button {
+    font-size: 25px;
+  }
 }
 
 /*
@@ -512,9 +518,15 @@ settings-wrappers
 */
 
 .section-title {
-  font-size: 35px;
+  font-size: 25px;
   font-family: Halloween;
   color: #df1111;
+}
+
+@media (min-width: 630px) {
+  .section-title {
+    font-size: 35px;
+  }
 }
 
 .settings-wrappers {}
@@ -1163,7 +1175,7 @@ settingsLevel
 }
 
 .game-history {
-  width: 600px;
+  /*width: 600px;*/
   align-items: center;
   border-radius: 2px;
   /*margin: 10vh;*/
@@ -1176,6 +1188,7 @@ settingsLevel
 .game-history-container {
   margin-top: 15px;
   margin-bottom: 30px;
+  flex-direction: column;
 }
 
 .game-history p {
