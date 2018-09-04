@@ -1,14 +1,14 @@
 const configWrappers = {
-  "blade runner": {
-    wrapperLink: "url('./images/blade runner/wrapper.jpg')",
+  "starcraft": {
+    wrapperLink: "url('./images/starcraft/wrapper.jpg')",
     frontSideLinks: [
-      "url('./images/blade runner/runner1.jpg')",
-      "url('./images/blade runner/runner2.jpg')",
-      "url('./images/blade runner/runner3.jpg')",
-      "url('./images/blade runner/runner4.jpg')",
-      "url('./images/blade runner/runner5.jpg')",
+      "url('./images/starcraft/starcraft1.jpg')",
+      "url('./images/starcraft/starcraft2.jpg')",
+      "url('./images/starcraft/starcraft3.jpg')",
+      "url('./images/starcraft/starcraft4.jpg')",
+      "url('./images/starcraft/starcraft5.jpg')",
     ],
-    backgroundImageLink: "url('./images/blade runner/bg.jpg')",
+    backgroundImageLink: "url('./images/starcraft/bg.jpg')",
   },
   "warcraft": {
     wrapperLink: "url('./images/warcraft/wrapper.jpg')",
@@ -24,57 +24,6 @@ const configWrappers = {
     ],
     backgroundImageLink: "url('./images/warcraft/bg.jpg')",
   },
-  "suicide squad": {
-    wrapperLink: "url('./images/suicide squad/wrapper.jpg')",
-    frontSideLinks: [
-      "url('./images/suicide squad/suicide squad1.jpg')",
-      "url('./images/suicide squad/suicide squad2.jpg')",
-      "url('./images/suicide squad/suicide squad3.jpg')",
-      "url('./images/suicide squad/suicide squad4.jpg')",
-      "url('./images/suicide squad/suicide squad5.jpg')",
-      "url('./images/suicide squad/suicide squad6.jpg')",
-    ],
-    backgroundImageLink: "url('./images/suicide squad/bg.jpg')",
-  },
-  "league of justice": {
-    wrapperLink: "url('./images/league of justice/wrapper.jpg')",
-    frontSideLinks: [
-      "url('./images/league of justice/justice1.jpg')",
-      "url('./images/league of justice/justice2.jpg')",
-      "url('./images/league of justice/justice3.jpg')",
-      "url('./images/league of justice/justice4.jpg')",
-      "url('./images/league of justice/justice5.jpg')",
-      "url('./images/league of justice/justice6.jpg')",
-    ],
-    backgroundImageLink: "url('./images/league of justice/bg.jpg')",
-  },
-  "girls": {
-    wrapperLink: "url('./images/girls/wrapper.jpg')",
-    frontSideLinks: [
-      "url('./images/girls/girl1.jpg')",
-      "url('./images/girls/girl2.jpg')",
-      "url('./images/girls/girl3.jpg')",
-      "url('./images/girls/girl4.jpg')",
-      "url('./images/girls/girl5.jpg')",
-      "url('./images/girls/girl6.jpg')",
-      "url('./images/girls/girl7.jpg')",
-      "url('./images/girls/girl8.jpg')",
-    ],
-  },
-  "guardians": {
-    wrapperLink: "url('./images/guardians the galaxy/wrapper.jpg')",
-    frontSideLinks: [
-      "url('./images/guardians the galaxy/guardian1.jpg')",
-      "url('./images/guardians the galaxy/guardian2.jpg')",
-      "url('./images/guardians the galaxy/guardian3.jpg')",
-      "url('./images/guardians the galaxy/guardian4.jpg')",
-      "url('./images/guardians the galaxy/guardian5.jpg')",
-      "url('./images/guardians the galaxy/guardian6.jpg')",
-      "url('./images/guardians the galaxy/guardian7.jpg')",
-      "url('./images/guardians the galaxy/guardian8.jpg')",
-    ],
-    backgroundImageLink: "url('./images/guardians the galaxy/bg.jpg')",
-  },
   "overwatch": {
     wrapperLink: "url('./images/overwatch/wrapper.jpg')",
     frontSideLinks: [
@@ -86,6 +35,19 @@ const configWrappers = {
       "url('./images/overwatch/over6.jpg')",
     ],
     backgroundImageLink: "url('./images/overwatch/bg.jpg')",
+  },
+  "diablo": {
+    wrapperLink: "url('./images/diablo/wrapper.jpg')",
+    frontSideLinks: [
+      "url('./images/diablo/diablo1.jpg')",
+      "url('./images/diablo/diablo2.jpg')",
+      "url('./images/diablo/diablo3.jpg')",
+      "url('./images/diablo/diablo4.jpg')",
+      "url('./images/diablo/diablo5.jpg')",
+      "url('./images/diablo/diablo6.jpg')",
+      "url('./images/diablo/diablo7.jpg')",
+    ],
+    backgroundImageLink: "url('./images/diablo/bg.jpg')",
   }
 };
 
@@ -94,10 +56,16 @@ class ChangeConfig{
     this.serverUrl = 'https://fe.it-academy.by/AjaxStringStorage2.php';
     this.configWrappers = '';
     this.stringConfig = 'KUZNIATSOU_MEMORY_CONFIG';
+    this.profilesStorage = 'KUZNIATSOU_MEMORY_PROFILES';
+    this.usersRatingStorage = 'KUZNIATSOU_MEMORY_RATING';
     this.password = '';
     this.serverDataString = '';
 
+
+
+
     // this.updateConfig();
+    // this.updateProfiles()
 
   }
 
@@ -177,6 +145,41 @@ class ChangeConfig{
         dataType: 'json',
         data: {
           f: 'UPDATE', n: that.stringConfig, v: JSON.stringify(configWrappers), p: that.password
+        },
+        success: that.updateReady,
+        error: that.ajaxErr
+      })
+    }
+  }
+
+  updateProfiles() {
+    this.password = Math.random();
+    let that = this;
+    $.ajax({
+      url: this.serverUrl,
+      type: 'POST',
+      cache: false,
+      dataType: 'json',
+      data: {
+        f: 'LOCKGET', n: that.profilesStorage, p: that.password
+      },
+      success: that.updateProfilesReady.bind(that),
+      error: that.ajaxErr
+    })
+  }
+
+  updateProfilesReady(response) {
+    let that = this;
+    if (response.error !== undefined)
+      alert(response.error);
+    else {
+      $.ajax({
+        url: this.serverUrl,
+        type: 'POST',
+        cache: false,
+        dataType: 'json',
+        data: {
+          f: 'UPDATE', n: that.profilesStorage, v: JSON.stringify([]), p: that.password
         },
         success: that.updateReady,
         error: that.ajaxErr

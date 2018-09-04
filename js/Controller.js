@@ -113,7 +113,6 @@ class Controller {
   }
 
   beforeUnloadNotification(evt) {
-    debugger;
     console.log('Page close');
     let message = "STOP";
     if (typeof evt == "undefined") {
