@@ -17,7 +17,6 @@ class SoundPlayer {
     const clickSound = "audio/click.mp3";
     this.audio.src = clickSound;
     this.audio.play();
-    this.vibration();
   }
 
   playSlideWrapper(){
@@ -71,6 +70,7 @@ class SoundPlayer {
       const matchSound = "audio/game-area-sounds/match.mp3";
       newAudio.src = matchSound;
       newAudio.play();
+      this.vibration();
     }, 100);
   }
 

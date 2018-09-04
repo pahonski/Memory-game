@@ -61,7 +61,7 @@ body {
   height: 100%;
   padding: 0;
   margin: 0 auto;
-  background-color: #2e2a2ada;
+  background-color: #4B2024;
   background: url('../images/bg-main.jpg') no-repeat center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -70,6 +70,14 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-family: Halloween;
   font-size: 22px;
+}
+
+@media (max-width: 767px) {
+  body {
+
+    background-attachment: initial;
+
+  }
 }
 
 /*body:before {*/
@@ -322,8 +330,8 @@ section {
 }
 
 .table-container {
-  height: 360px;
-  overflow-x: hidden;
+  /*height: 360px;*/
+  /*overflow-x: hidden;*/
 }
 
 .profiles-table, .rating-table{
@@ -354,8 +362,6 @@ td {
 
 .profile-row > td {
   word-wrap: break-word;
-  max-width: 100px;
-  min-width: 61px;
 }
 
 .rules {
@@ -792,20 +798,20 @@ settings-wrappers
 }
 
 .card.card-size-small {
-  width: 55px;
-  height: 85px;
+  width: 82px;
+  height: 110px;
 }
 
 @media (min-width: 670px) {
   .card.card-size-small {
-    width: 110px;
-    height: 170px;
+    width: 135px;
+    height: 180px;
   }
 }
 
 .card.card-size-medium {
   width: 80px;
-  height: 85px;
+  height: 110px;
 }
 
 @media (min-width: 670px) {
