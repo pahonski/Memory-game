@@ -1,6 +1,7 @@
 class SoundPlayer {
   constructor() {
     this.audio = new Audio();
+    this.window = window;
     //this.playRandomSound();
     this.countLaughtSound = 0;
   }
@@ -16,6 +17,7 @@ class SoundPlayer {
     const clickSound = "audio/click.mp3";
     this.audio.src = clickSound;
     this.audio.play();
+    this.vibration();
   }
 
   playSlideWrapper(){
@@ -90,5 +92,9 @@ class SoundPlayer {
 
   playStopWinSound() {
     this.audio.pause();
+  }
+
+  vibration() {
+    this.window.navigator.vibrate(1000);
   }
 }
