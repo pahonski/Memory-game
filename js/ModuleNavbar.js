@@ -52,6 +52,7 @@ class ModuleNavbar {
   }
 
   showSectionUserForm() {
+    console.log('Click');
     soundPlayer.playClickButtonSound();
     this.show();
     this.controller.router.routToSectionUserForm();
