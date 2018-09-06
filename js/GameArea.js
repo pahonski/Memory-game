@@ -110,14 +110,6 @@ class GameArea {
     this.gameArea.classList.add('hide');
   }
 
-  runRain() {
-    this.rain.classList.remove('hide');
-  }
-
-  stopRain() {
-    this.rain.classList.add('hide');
-  }
-
   heandlerNotifications(notification) {
     console.log("heandlerNotifications");
     console.log(notification);
