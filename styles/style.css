@@ -1,6 +1,6 @@
 html {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   box-sizing: border-box;
 }
 
@@ -58,7 +58,7 @@ h4 {
 
 body {
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
   padding: 0;
   margin: 0 auto;
   background-color: #4B2024;
@@ -88,9 +88,9 @@ body {
     /*-o-background-size: cover;*/
     /*background-size: cover;*/
   /*}*/
-  body {
-    background-size: auto;
-  }
+  /*body {*/
+    /*background-size: auto;*/
+  /*}*/
 }
 
 
