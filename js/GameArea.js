@@ -348,7 +348,6 @@ class GameArea {
   restartGame() {
     function callback(){
       soundPlayer.playStopWinSound();
-      this.stopRain();
       stopwatch.stop();
       stopwatch.reset();
       this.gameArea.innerHTML = "";
