@@ -144,8 +144,8 @@ class GameArea {
 
     if (this.configWrappers[nameWrapper].backgroundImageLink) {
       const bgUrl = this.configWrappers[nameWrapper].backgroundImageLink;
-      // document.body.style.backgroundImage = bgUrl;
-      wrapperBlock.style.backgroundImage = bgUrl;
+      document.body.style.backgroundImage = bgUrl;
+      // wrapperBlock.style.backgroundImage = bgUrl;
     }
   }
 
