@@ -1,7 +1,6 @@
 html {
   width: 100%;
-  min-height: 100%;
-  height: auto;
+  height: 100%;
   box-sizing: border-box;
 }
 
@@ -59,8 +58,7 @@ h4 {
 
 body {
   width: 100%;
-  min-height: 100%;
-  height: auto;
+  height: 100%;
   padding: 0;
   margin: 0 auto;
   background-color: #4B2024;
