@@ -140,10 +140,12 @@ class GameArea {
 
   setArenaBackground() {
     const nameWrapper = this.areaSettings.wrapperCards;
+    const wrapperBlock = document.querySelector('.wrapper');
 
     if (this.configWrappers[nameWrapper].backgroundImageLink) {
       const bgUrl = this.configWrappers[nameWrapper].backgroundImageLink;
-      document.body.style.backgroundImage = bgUrl;
+      // document.body.style.backgroundImage = bgUrl;
+      wrapperBlock.style.backgroundImage = bgUrl;
     }
   }
 
