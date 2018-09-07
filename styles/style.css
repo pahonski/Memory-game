@@ -1024,7 +1024,7 @@ settingsLevel
   flex-wrap: wrap;
   /*height: 560px;*/
   margin-top: 10px;
-  padding: 15px 15px 5px 15px;
+  padding: 15px 15px 15px 15px;
   border-radius: 2px;
   /* background-color: #201f1f38;*/
   /*background-color: #1a1a1aa2;*/
@@ -1041,7 +1041,6 @@ settingsLevel
 @media  (min-width: 670px) {
   .rating-container {
     width: auto;
-
   }
 }
 
@@ -1057,7 +1056,6 @@ settingsLevel
   }
 }
 
-.rating-level-buttons {}
 
 .rain {
   position: absolute;
