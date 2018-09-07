@@ -88,9 +88,9 @@ body {
     /*-o-background-size: cover;*/
     /*background-size: cover;*/
   /*}*/
-  /*body {*/
-    /*background-size: auto;*/
-  /*}*/
+  body {
+    background-size: auto;
+  }
 }
 
 
